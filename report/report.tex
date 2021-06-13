@@ -61,13 +61,21 @@
 
 	\section{Introduction}
 	
-	Number recognization is a widely used application, with great sophistication. There are many types of machine learning methods that can be used in this scenario. In this report, we have adopted five methods, such as Support Vector Machine, K-Nearsest Neighbors, Bayes Classification, Neural Networks and Logistic Regression. We will analyze the accuracy, runtime performance, confusion matrix and other standards to compare their performance, and conclude the best method.
+	Number recognization is a widely used application, with great sophistication. There are many types of machine learning methods that can be used in this scenario. In this report, we have adopted five methods, such as Support Vector Machine (SVM), K-Nearsest Neighbors (KNN), Bayes Classification (BC), Neural Networks (NN) and Logistic Regression (LR). We will analyze the accuracy, runtime performance, confusion matrix and other standards to compare their performance, and conclude the best method.
 	
 	\section{Data Setting and Methods}
 	
 	\subsection{Data setting}
 	
-	Our training data and testing data are in the same form, with 28*28 pixels, therefore, we use a 784 dimensional vector to represent each number picture. 
+	Our training data and testing data are in the same form, with 28*28 pixels, therefore, we use a 784 dimensional vector to represent each number picture. The pictures are gray images, scaling from 0 to 255.
+	
+	\subsection{KNN}
+	
+	The first method we use is KNN. We convert the images to a 784 dimensional vector for easier calculation. Since the dimension is quite big, which makes the complexity of calculating 2-norm quite big, so we use 1-norm instead. KNN calculates K nearest images that has the smalles 1-norm distance to a given test data, and labels it as the class that contains the most number of neighbors. 
+	
+	\subsection{SVM}
+	
+	  
 	
 	\section{Submission of papers to NeurIPS 2021}
 	
