@@ -61,13 +61,13 @@
 
 	\section{Introduction}
 	
-	Number recognization is a widely used application, with great sophistication. There are many types of machine learning methods that can be used in this scenario. In this report, we have adopted five methods, such as Support Vector Machine (SVM), K-Nearsest Neighbors (KNN), Bayes Classification (BC), Neural Networks (NN) and Logistic Regression (LR). We will analyze the accuracy, runtime performance, confusion matrix and other standards to compare their performance, and conclude the best method.
+	Number recognization is a widely used application, with great sophistication. There are many types of machine learning methods that can be used in this scenario. In this report, we have adopted five methods, such as Support Vector Machine (SVM), K-Nearsest Neighbors (KNN), Naive Bayes (NB), Neural Networks (NN) and Logistic Regression (LR). We will analyze the accuracy, runtime performance, confusion matrix and other standards to compare their performance, and conclude the best method.
 	
 	\section{Data Setting and Methods}
 	
 	\subsection{Data setting}
 	
-	Our training data and testing data are in the same form, with 28*28 pixels, therefore, we use a 784 dimensional vector to represent each number picture. The pictures are gray images, scaling from 0 to 255.
+	Our training data and testing data are collected from \textit{mnist} dataset. They're in the same form, with 28*28 pixels, therefore, we use a 784 dimensional vector to represent each number picture. The pictures are gray images, scaling from 0 to 255.
 	
 	\subsection{KNN}
 	
@@ -75,7 +75,12 @@
 	
 	\subsection{SVM}
 	
-	  
+	We use the svm from \textit{sklearn} package. We directly put the data and label into the model \textit{svm.fit()} for training, then use \textit{svm.predict()} to run prediction.
+	
+	\subsection{NB}
+	
+	 The naive bayes model from sklearn does not work well, with only 58\% accuracy, so we try to implement one by ourselves. For training data, we calculate two thing: the probabilities of an image being labeled as each class, which is for the case when the training set is unevenly distributed; and the probabilities of the gray value of a pixel being $0$ in each class. \\ \\
+	 Then, the prediction works like this: given a test image, we calculate the probability multiplication of all pixel points, and choose the label with the highest probability.
 	
 	\section{Submission of papers to NeurIPS 2021}
 	
