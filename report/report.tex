@@ -79,7 +79,7 @@
 	
 	\subsection{NB}
 	
-	 The naive bayes model from sklearn does not work well, with only 58\% accuracy, so we try to implement one by ourselves. For training data, we calculate two thing: the probabilities of an image being labeled as each class, which is for the case when the training set is unevenly distributed; and the probabilities of the gray value of a pixel being $0$ in each class. \\ \\
+	 The naive bayes model from sklearn does not work well, with only 58\% accuracy, so we try to implement one by ourselves. For training data, we calculate two thing: the probabilities of an image being labeled as each class; and the probabilities of the gray value of a pixel being $0$ in each class, which means we choose every pixel as a feature. \\ \\
 	 Then, the prediction works like this: given a test image, we calculate the probability multiplication of all pixel points, and choose the label with the highest probability.
 	
 	\section{Submission of papers to NeurIPS 2021}
