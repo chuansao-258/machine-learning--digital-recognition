@@ -4,19 +4,21 @@
 \BOOKMARK [2][-]{subsection.2.2}{KNN}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{SVM}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{NB}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Submission of papers to NeurIPS 2021}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Style}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Retrieval of style files}{section.3}% 9
-\BOOKMARK [1][-]{section.4}{General formatting instructions}{}% 10
-\BOOKMARK [1][-]{section.5}{Headings: first level}{}% 11
-\BOOKMARK [2][-]{subsection.5.1}{Headings: second level}{section.5}% 12
-\BOOKMARK [3][-]{subsubsection.5.1.1}{Headings: third level}{subsection.5.1}% 13
-\BOOKMARK [1][-]{section.6}{Citations, figures, tables, references}{}% 14
-\BOOKMARK [2][-]{subsection.6.1}{Citations within the text}{section.6}% 15
-\BOOKMARK [2][-]{subsection.6.2}{Footnotes}{section.6}% 16
-\BOOKMARK [2][-]{subsection.6.3}{Figures}{section.6}% 17
-\BOOKMARK [2][-]{subsection.6.4}{Tables}{section.6}% 18
-\BOOKMARK [1][-]{section.7}{Final instructions}{}% 19
-\BOOKMARK [1][-]{section.8}{Preparing PDF files}{}% 20
-\BOOKMARK [2][-]{subsection.8.1}{Margins in LaTeX}{section.8}% 21
-\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 22
+\BOOKMARK [1][-]{section.3}{Results}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Accuracy}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Submission of papers to NeurIPS 2021}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Style}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Retrieval of style files}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{General formatting instructions}{}% 12
+\BOOKMARK [1][-]{section.6}{Headings: first level}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Headings: second level}{section.6}% 14
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Headings: third level}{subsection.6.1}% 15
+\BOOKMARK [1][-]{section.7}{Citations, figures, tables, references}{}% 16
+\BOOKMARK [2][-]{subsection.7.1}{Citations within the text}{section.7}% 17
+\BOOKMARK [2][-]{subsection.7.2}{Footnotes}{section.7}% 18
+\BOOKMARK [2][-]{subsection.7.3}{Figures}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.4}{Tables}{section.7}% 20
+\BOOKMARK [1][-]{section.8}{Final instructions}{}% 21
+\BOOKMARK [1][-]{section.9}{Preparing PDF files}{}% 22
+\BOOKMARK [2][-]{subsection.9.1}{Margins in LaTeX}{section.9}% 23
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 24
