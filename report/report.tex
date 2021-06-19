@@ -26,6 +26,7 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
+\usepackage{graphicx}
 
 \title{Digital recognization by five methods}
 
@@ -71,7 +72,10 @@
 	
 	\subsection{KNN}
 	
-	The first method we use is KNN. We convert the images to a 784 dimensional vector for easier calculation. Since the dimension is quite big, which makes the complexity of calculating 2-norm quite big, so we use 1-norm instead. KNN calculates K nearest images that has the smalles 1-norm distance to a given test data, and labels it as the class that contains the most number of neighbors. \\ \\
+	The first method we use is KNN. Consider that each picture is composed of 784 pixels. If we expand it into a 784-dimensional vector in a fixed spatial order, we can put each test point into a hyperplane. Since the dimension is quite big, which makes the complexity of calculating 2-norm quite big, so we use 1-norm instead. KNN calculates K nearest images that has the smalles 1-norm distance to a given test data, and labels it as the class that contains the most number of neighbors. 
+	
+	It takes at least $O(784)$ time to calculate the distance for every two pictures. The number of samples in the training set is 60,000, the number of samples in the test set is 10,000, and the time responsibility is $O(5*10^11)$, which is too long. In our test, we select the first 100 test set samples for testing, which approximates the matching rate of the KNN algorithm.
+	
 	The code implementation is at 
 	\begin{center}
 		\url{https://github.com/chuansao-258/machine-learning--digital-recognition/blob/main/knn.ipynb}
@@ -79,24 +83,46 @@
 	
 	\subsection{SVM}
 	
-	We use the svm from \textit{sklearn} package. We directly put the data and label into the model \textit{svm.fit()} for training, then use \textit{svm.predict()} to run prediction. \\ \\
-	The code implementation is at
+	The SVM algorithm was originally designed for binary classification problems. When dealing with multi-class problems, it is necessary to construct a suitable multi-class classifier. So when extracting the training set, take class $0$ as an example, extract:
+	
+	\begin{equation}
+		+: 0, -: 1\sim 8
+	\end{equation}
+
+	Other class work similarly. When testing, use the ten training result files to test the corresponding test vectors. Finally, each test has a result $f_0(x), f_1(x), \cdots, f_{9}(x)$. The final result is the largest of these four values as the classification result.
+	
+	We use the svm from \textit{sklearn} package. We directly put the data and label into the model \textit{svm.fit()} for training, then use \textit{svm.predict()} to run prediction. The code implementation is at
 	\begin{center}
 		\url{https://github.com/chuansao-258/machine-learning--digital-recognition/blob/main/SVM.ipynb}
 	\end{center}
 	
 	\subsection{NB}
 	
-	 Before coding, we tried the naive bayes model in sklearn. However, it does not work well, with only 58\% accuracy, so we try to implement one by ourselves. For training data, we calculate two thing: the probabilities of an image being labeled as each class; and the probabilities of the gray value of a pixel being $0$ in each class, which means we choose every pixel as a feature. \\ \\
-	 Then, the prediction works like this: given a test image, we calculate the probability multiplication of all pixel points, and choose the label with the highest probability. \\ \\
-	 The code implementation is at 
+	In Bayes model. we assume all features are independent effects of the label. Simple digit recognition version: One feature(variable) $F_{i, j}$ for each grid position $<i,j>$. Feature values are on/off, based on whether intensity is more or less than 0.5 in underlying image. Each input maps to a feature vector, e.g. Image1 $\rightarrow (F_{0, 0} = 0,  F_{0, 1}  = 0,  F_{0, 2}  = 1,..., F_{27, 27}  = 0)$. 
+	
+	 Then, the prediction works like this: given a test image, we calculate the probability multiplication of all pixel points, and choose the label with the highest probability, As shown in Figure \ref{bayes}.
+	 
+	 \begin{figure}[htbp]
+	 	\centering
+	 	\includegraphics[scale=0.6]{1.png}
+	 	\caption{Bayes classification}
+	 	\label{bayes}
+	 \end{figure}
+	 
+	 Before coding, we tried the naive bayes model in sklearn. However, it does not work well, with only 58\% accuracy, so we try to implement one by ourselves. The code implementation is at 
 	 \begin{center}
 	 	\url{https://github.com/chuansao-258/machine-learning--digital-recognition/blob/main/bayes.ipynb}
 	 \end{center}
  	 
  	 \subsection{LR}
  	 
- 	 As a matter of fact, Logistic Regression is a binary classification method. However, we want to classify these handwritings into 10 classes, so we need to extend LR method. For each class, we devide the dataset into the ones belong to the class, and the ones do not. This is a binary classification problem, and we need to do it 10 times. Finally, we choose the class that the input has the highest probability on.
+ 	 Similar to SVM, Logistic Regression is also a binary classification method. However, we want to classify these handwritings into 10 classes, so we need to extend LR method as well. For each class, we devide the dataset into the ones belong to the class, and the ones do not. For example, from class $0$'s perspective, the dataset would be labeled as:
+ 	 
+ 	 \begin{equation}
+ 	 	+: 0, -: 1\sim 8
+ 	 \end{equation}
+  
+	This turns out to be a binary classification problem now, and we need to do it for every class, 10 times in total. Finally, we choose the class that the input has the highest probability on.
  	 
  	 \subsection{NN}
 	 
