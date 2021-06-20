@@ -27,6 +27,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
 \usepackage{graphicx}
+\usepackage{subfigure}
 
 \title{Digital recognization by five methods}
 
@@ -122,37 +123,101 @@
  	 	+: 0, -: 1\sim 8
  	 \end{equation}
   
-	This turns out to be a binary classification problem now, and we need to do it for every class, 10 times in total. Finally, we choose the class that the input has the highest probability on.
+	This turns out to be a binary classification problem now, and we need to do it for every class, 10 times in total. Finally, we choose the class that the input has the highest probability on. 
+	
+	We use the LogisticRegression model in sklearn to implement this method. The code implementation is at
+	
+	\begin{center}
+		\url{https://github.com/chuansao-258/machine-learning--digital-recognition/blob/main/Logistic\%20Regression.ipynb}
+	\end{center}
  	 
  	 \subsection{NN}
+ 	 
+	The settings of the neural network is displayed as Figure \ref{nn.1} and \ref{nn.2}. The first 784 layers enter the neural network as input. The 15th layer is used as the middle layer; after passing through the middle layer, it enters the activation function 10 layers as the output layer, representing the possible probability of each picture for each number. Choose the largest one as the prediction result, and use the gradient descent method to modify the values of m1, b1, m2, and b2.
 	 
-	 \section{Results}
+	 \begin{figure}[htbp]
+	 	\centering
+	 	\subfigure{
+	 		\includegraphics[scale=0.5]{4.png}
+ 			\label{nn.1}}
+ 		\subfigure{
+ 			\includegraphics[scale=0.35]{3.png}
+ 			\label{nn.2}}
+	 	\caption{Neural network setting}
+	 \end{figure}
+ 
+ 	 The code implementation is at
+ 	
+ 	\begin{center}
+ 		\url{https://github.com/chuansao-258/machine-learning--digital-recognition/tree/main/nn}
+ 	\end{center} 
 	 
-	 \subsection{Accuracy}
+	 \section{Performance}
 	 
-	 As displayed in the jupyter notebook, the accuracy of these methods are
-	 \begin{table}[htbp]
-	 	\centering  % 显示位置为中间
-	 	\caption{Accuracy table}  % 表格标题
-	 	\label{table1}  % 用于索引表格的标签
-	 	%字母的个数对应列数，|代表分割线
-	 	% l代表左对齐，c代表居中，r代表右对齐
-	 	\begin{tabular}{|c|c|}  
-	 		\hline  % 表格的横线
-	 		& \\[-6pt]  %可以避免文字偏上来调整文字与上边界的距离
-	 		KNN & 47\% \\  % 表格中的内容，用&分开，\\表示下一行
-	 		\hline
-	 		& \\[-6pt]  %可以避免文字偏上 
-	 		NB& 68.41\% \\
-	 		\hline
-	 		& \\[-6pt]
-	 		SVM & 72.92\%\\
-	 		\hline
-	 	\end{tabular}
-	 \end{table}
+	 All the performances can be checked in the code implementation.
+	 
+	 \subsection{KNN}
+	 
+	 The parameters of KNN we set is: 
+	 \begin{itemize}
+	 	\item Manhattan distance
+	 	\item k = 5
+	 \end{itemize} 
+ 	And the accuracy is 47.00\%. This method takes long time to calculate and the performance is not good.
+ 	
+ 	\subsection{NB}
+ 	
+ 	To prevent the case that the probability might fall to 0, we set $0 = 1e^-7$. The accuracy is 68.41\%
+ 	
+ 	\subsection{LR}
+ 	
+ 	We set the solver in LogisticRegression model in sklearn as 'saga', and the accuracy is 92.57\%. This method can be seen as neural network without hidden layer, so we expect higher accuracy in NN method.
+ 	
+ 	\subsection{SVM}
+ 	
+ 	In the SVM model, there are two factors that might affect the accuracy,
+ 	\begin{itemize}
+ 		\item max\_iter: the number of iterations.
+ 		\item kernel: the kernel function type. the choices are 'linear', 'poly' and 'sigmoid'.
+ 	\end{itemize}
+ 	We've adjusted these two and the results are shown in Figure \ref{svm1} and \ref{svm2}.
+ 	
+ 	\begin{figure}[htbp]
+ 		\centering
+ 		\subfigure[accuracy-kernel]{
+ 			\includegraphics[scale=0.3]{per1.png}
+ 			\label{svm1}}
+ 		\subfigure[accuracy-max\_iter]{
+ 			\includegraphics[scale=0.3]{per2.png}
+ 			\label{svm2}}
+ 		\caption{SVM performance of two factors}
+ 	\end{figure}
+	
+	We can see that linear kernel with high iteration number, the accuracy could be very high, about 82\%. 
+	
+	\subsection{NN}
+	
+	In NN model, we find three factors that might affect the accuacy,
+	
+	\begin{itemize}
+		\item layer1: the number of units in the hidden layer. the choices are 15 or 100.
+		\item batch\_size: the number of training samples to choose in each round of training. the choices are 10 and 100.
+		\item iteration: the number of iterations in training.
+	\end{itemize}
+
+	We've compared six groups of parameters, and the performance is shown in Figure \ref{nn}. Apparently, the set $[100, 10, 30]$ works the best, with about 97.94\%
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.35]{per3.png}
+		\caption{NN performance of three factors}
+		\label{nn}
+	\end{figure}
+
+	\section{Conclusion}
+	
+	After impleenting these five methods, we can conclude that neural network works the best, with an astonishing 97.94\% accuracy. However, there are other choices, like convolutional neural network, recursive neural network, decision tree and so on. We hope to develop their possiblities in achieving higher accuracy in further research and implementation.
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-
 	
 \end{document}

@@ -6,5 +6,10 @@
 \BOOKMARK [2][-]{subsection.2.4}{NB}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.5}{LR}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.6}{NN}{section.2}% 8
-\BOOKMARK [1][-]{section.3}{Results}{}% 9
-\BOOKMARK [2][-]{subsection.3.1}{Accuracy}{section.3}% 10
+\BOOKMARK [1][-]{section.3}{Performance}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{KNN}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{NB}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{LR}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{SVM}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.5}{NN}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Conclusion}{}% 15
